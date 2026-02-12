@@ -1,0 +1,34 @@
+<!-- File: images/logo.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="56" viewBox="0 0 880 224" role="img" aria-label="SHAMTEK logo">
+  <defs>
+    <!-- تدرّج لوني بسيط -->
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4f46e5"></stop>
+      <stop offset="100%" stop-color="#06b6d4"></stop>
+    </linearGradient>
+    <style>
+      .word { font: 800 100px system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; letter-spacing: 2px; fill: #111827; }
+      .tag  { font: 500 28px system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #475569; }
+      .stroke { stroke: url(#g); stroke-width: 10; fill: none; }
+      .fill   { fill: url(#g); }
+      .mono   { fill: #111827; }
+    </style>
+  </defs>
+
+  <!-- مجموعة الأيقونات (كمبيوتر + هاتف) يسار الشعار -->
+  <g transform="translate(12,28)">
+    <!-- لابتوب: شاشة + قاعدة -->
+    <rect x="0" y="0" rx="14" ry="14" width="120" height="80" class="stroke"></rect>
+    <rect x="14" y="14" rx="8" ry="8" width="92" height="52" fill="#e5e7eb"></rect>
+    <rect x="-10" y="92" rx="8" ry="8" width="140" height="14" class="fill"></rect>
+    <!-- هاتف بجانب اللابتوب -->
+    <rect x="136" y="-6" rx="16" ry="16" width="48" height="96" class="stroke"></rect>
+    <rect x="144" y="6" rx="10" ry="10" width="32" height="72" fill="#e5e7eb"></rect>
+    <circle cx="160" cy="86" r="4" class="mono"></circle>
+  </g>
+
+  <!-- نص الشعار -->
+  <text x="220" y="96" class="word">SHAMTEK</text>
+  <!-- سطر وصفي صغير (اختياري) -->
+  <text x="222" y="138" class="tag">ORDINATEURS &amp; SMARTPHONES</text>
+</svg>
