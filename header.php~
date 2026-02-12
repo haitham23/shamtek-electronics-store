@@ -1,0 +1,57 @@
+<?php
+// مهم جدا
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
+<header>
+  <div class="container header-row">
+
+```
+<!-- LOGO IMAGE -->
+<div class="logo">
+  <a href="index.php">
+    <img src="images/logo.svg" alt="SHAMTEK">
+  </a>
+</div>
+
+<!-- RIGHT MENU -->
+<div class="header-right">
+
+  <?php if(isset($_SESSION['prenom'])): ?>
+    <span class="welcome">
+      Bonjour <?= htmlspecialchars($_SESSION['prenom']); ?>
+    </span>
+  <?php endif; ?>
+
+  <?php if(isset($_SESSION['role']) && $_SESSION['role']==='admin'): ?>
+    <a href="admin/dashboard.php" class="admin-btn">
+      ⚙ Admin
+    </a>
+  <?php endif; ?>
+
+  <a href="historique.php" class="header-btn">
+    📦 Commandes
+  </a>
+
+  <a href="panier.php" class="cart-btn">
+    🛒 Panier
+  </a>
+
+  <!-- زر تسجيل الدخول / الخروج -->
+  <?php if(isset($_SESSION['prenom'])): ?>
+      <a href="deconnexion.php" class="logout-btn">
+        Déconnexion
+      </a>
+  <?php else: ?>
+      <a href="connexion.php" class="login-btn">
+        Se connecter
+      </a>
+  <?php endif; ?>
+
+</div>
+
+
+  </div>
+</header>

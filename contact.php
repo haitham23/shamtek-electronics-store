@@ -1,0 +1,81 @@
+<?php
+session_start();
+function e($v){ return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8'); }
+?>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Contact — SHAMTEK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 🔹 HEADER -->
+  <header>
+    <div class="container header-row">
+      <div class="logo">
+        <a href="index.php">
+          <img src="images/logo.svg" alt="SHAMTEK" class="logo-img">
+        </a>
+      </div>
+
+      <div class="login-icon">
+
+        <?php if (!isset($_SESSION['id_client'])): ?>
+
+          <!-- Visiteur -->
+          <a href="nouveau.php" title="Nouveau Client" class="header-link">
+            <img src="images/login.svg" alt="" class="icon-login">
+            <span class="login-text"> Nouveau Client </span>
+          </a>
+
+          <a href="connexion.php" title="Se connecter" class="header-link" style="margin-left:12px">
+            <img src="images/login.svg" alt="" class="icon-login">
+            <span class="login-text"> Se connecter </span>
+          </a>
+
+        <?php else: ?>
+
+          <!-- Client connecté -->
+          <span class="login-text" style="margin-right:12px;">
+            Bonjour <?= e($_SESSION['prenom'].' '.$_SESSION['nom']); ?>
+          </span>
+
+          <a href="panier.php" class="header-link" style="margin-right:12px">🛒 Voir mon panier</a>
+          <a href="deconnexion.php" class="header-link">⎋ Se déconnecter</a>
+
+        <?php endif; ?>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- 🔹 MAIN CONTENT -->
+  <main class="container">
+    <div class="panel">
+      <div class="panel-body">
+        <h1 class="h1">Contact</h1>
+        <p><strong>Nom :</strong> Haitham Alfakhry</p>
+        <p><strong>Parcours académique :</strong> Étudiant en L3 MAISH.</p>
+        <p><strong>Email :</strong> haitham.alfakhry@gmail.com</p>
+        <p><strong>Description :</strong> Passionné par le développement web et les technologies numériques.</p>
+
+        <div style="margin-top:16px;">
+          <a href="index.php" class="back">← Retour</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 🔹 FOOTER -->
+  <footer>
+    <div class="container foot">
+      <span>© <?= date('Y') ?> SHAMTEK</span>
+      <span>Support : contact@shamtek.example</span>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?php
+session_start();
+header('Content-Type: application/json');
+
+require 'bd.php';
+$bdd = getBD();
+
+$mail = isset($_POST['mail']) ? trim($_POST['mail']) : '';
+$mdp  = isset($_POST['mdp']) ? trim($_POST['mdp']) : '';
+
+if ($mail === '' || $mdp === '') {
+    echo json_encode(["success" => false, "error" => "empty"]);
+    exit;
+}
+
+$stmt = $bdd->prepare("SELECT * FROM clients WHERE mail = ? LIMIT 1");
+$stmt->execute([$mail]);
+$user = $stmt->fetch();
+
+if (!$user) {
+    echo json_encode(["success" => false, "error" => "invalid"]);
+    exit;
+}
+
+if (!password_verify($mdp, $user['mdp'])) {
+    echo json_encode(["success" => false, "error" => "invalid"]);
+    exit;
+}
+
+$_SESSION['id_client'] = $user['id_client'];
+$_SESSION['nom']       = $user['nom'];
+$_SESSION['prenom']    = $user['prenom'];
+$_SESSION['mail']      = $user['mail'];
+$_SESSION['role'] = $client['role'];
+
+echo json_encode(["success" => true]);
+exit;
+
